@@ -26,6 +26,7 @@
 - Persistent Volume Claim - PVC is an advertisement of options. K8s looks for existence of volume available (static provision) or arranges on the fly (dynamically provisioned)
 - **Helm** (client/CLI tool) + Tiller(server running inside k8s cluster) : Tool used to manage third party packages on Kubernetes. Tiller is decommissioned with Helm3
 - **Skaffold** is a tool helping Kubernetes to watch for local development folders for any changes and rebuild images automatically and then update the k8s cluster (Similar to docker volumes). There is also option to directly inject the changed files into the running container (when your have nodemon or webpack, so running instances update themselves whenever a change has occurred)
+- **KOPS** complete guide -https://www.youtube.com/watch?v=S0tQ40T9tqg. Good when we have multi-cloud strategy. **EKS** for AWS and **GKE** for GCP is still a little easier to configure.
 - Kubernetes commands:
 ```
     - kubectl apply -f <filename>
@@ -36,4 +37,3 @@
     - kubectl set  image <object type>/<object name> <container name>=<new image path>, example : kubectl set  image deployment/client-deployment client=ghoshsaurabh/multi-client:v2 //Update the version of image imperatively! 
     - eval $(minikube docker-env) //configure the VM to use docker server. Will be applicable only to the current terminal
     - Kubectl create <type of object> <type> <name> —from-literal <key=value>. Example usage : Kubectl create secret generic pgpassword - - from-literal pgpassword=somepassword
-    

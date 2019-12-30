@@ -1,0 +1,39 @@
+- Helps in running multiple containers with different images with controlled running instances over different machines. Unlike BeanStalk, where all the containers inside a EB cluster are replicated, Kubernetes helps to just run one/many of the containers within the cluster to run over different VM’s
+- A Kubernetes cluster is formed by a master and set of nodes. Master manages the nodes. There’s a Load balancer placed before the Kubernetes cluster.
+- For development, we use minikube program (CLI) to setup a tiny Kubernetes cluster on local. Kubectl program is used to interact with a Kubernetes cluster and manage nodes. * Minikube uses VirtualBox.
+- For production, we use managed solutions like Amazon Elastic Kubernetes Service (EKS) or Google Cloud Kubernetes Engine (GKE).
+- Config files in projects are used to create ‘objects’. Types of Objects can be:
+    - StatefulSet //
+    - ReplicaController //
+    - Pod //Used to run a container
+        - Pod is a grouping of containers with common purpose (tight integration). (Smallest thing we can deploy to run a single container, should run one of more containers)
+    - Service //Used to setup a networking
+        - Has following sub types (spec):
+            - ClusterIP //Exposes a set of pods to other objects in the cluster. Does not allow connection to outside world. 
+            - NodePort //Expose one or set of pods to the outside world (only for dev purposes)
+            - LoadBalancer //Legacy way of getting traffic into cluster. New way is ingress
+            - Ingress //Exposes a set of services to outside world
+    - Deployment //Maintains a set of identical pods (one of more). Ensuring they have correct config. Used in both dev and prod environment
+    - PersistentVolumeClaim (PVC)
+    - Secrets //Used to store passwords, keys
+- Running `minikube start` starts a VM on local machine. The VM is called as `Node`
+- Kubernetes uses a label selector system instead of naming system to refer to objects
+- Kubernetes master decides where to run each container - each node can run a dissimilar set of containers
+- To deploy something, we update the desired state of the master with a config file
+- Always prefer to take the Declarative approach(let K8s manage stuff for you) for deployments rather than Imperative (manage each step yourself)
+- Volumes in docker world is used when we want to give access of filesystem to the container. But with k8s, Volume is an object that allows container to store data at Pod level. If Pod dies, the volume is destroyed as well, hence it should not be used to store data.
+- Persistent Volume -  Data is stored outside of Pod. Hence if either the container or Pod dies, data is still persisted.
+- Persistent Volume Claim - PVC is an advertisement of options. K8s looks for existence of volume available (static provision) or arranges on the fly (dynamically provisioned)
+- Helm (client/CLI tool) + Tiller(server running inside k8s cluster) : Tool used to manage third party packages on Kubernetes. Tiller is decommissioned with Helm3
+- Skaffold is a tool helping Kubernetes to watch for local development folders for any changes and rebuild images automatically and then update the k8s cluster (Similar to docker volumes). There is also option to directly inject the changed files into the running container (when your have nodemon or webpack, so running instances update themselves whenever a change has occurred)
+- Kubernetes commands:
+```
+    - kubectl apply -f <filename>
+    - kubectl delete  -f <config file>
+    - kubectl get pods / kubectl get services
+    - minikube ip //gets the IP address of the VM running
+    - kubectl describe <object type> <name of object> //get detailed info about an object
+    - kubectl set  image <object type>/<object name> <container name>=<new image path>, example : kubectl set  image deployment/client-deployment client=ghoshsaurabh/multi-client:v2 //Update the version of image imperatively! 
+    - eval $(minikube docker-env) //configure the VM to use docker server. Will be applicable only to the current terminal
+    - Kubectl create <type of object> <type> <name> —from-literal <key=value>. Example usage : Kubectl create secret generic pgpassword - - from-literal pgpassword=p@$$w0rd
+    ```

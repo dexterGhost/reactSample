@@ -9,10 +9,10 @@
         - Pod is a grouping of containers with common purpose (tight integration). (Smallest thing we can deploy to run a single container, should run one of more containers)
     - Service //Used to setup a networking
         - Has following sub types (spec):
-            - ClusterIP //Exposes a set of pods to other objects in the cluster. Does not allow connection to outside world. 
-            - NodePort //Expose one or set of pods to the outside world (only for dev purposes)
-            - LoadBalancer //Legacy way of getting traffic into cluster. New way is ingress
-            - Ingress //Exposes a set of services to outside world
+            - *ClusterIP* //Exposes a set of pods to other objects in the cluster. Does not allow connection to outside world. 
+            - *NodePort* //Expose one or set of pods to the outside world (only for dev purposes)
+            - *LoadBalancer* //Legacy way of getting traffic into cluster. New way is ingress
+            - *Ingress* //Exposes a set of services to outside world
     - Deployment //Maintains a set of identical pods (one of more). Ensuring they have correct config. Used in both dev and prod environment
     - PersistentVolumeClaim (PVC)
     - Secrets //Used to store passwords, keys
@@ -24,8 +24,8 @@
 - Volumes in docker world is used when we want to give access of filesystem to the container. But with k8s, Volume is an object that allows container to store data at Pod level. If Pod dies, the volume is destroyed as well, hence it should not be used to store data.
 - Persistent Volume -  Data is stored outside of Pod. Hence if either the container or Pod dies, data is still persisted.
 - Persistent Volume Claim - PVC is an advertisement of options. K8s looks for existence of volume available (static provision) or arranges on the fly (dynamically provisioned)
-- Helm (client/CLI tool) + Tiller(server running inside k8s cluster) : Tool used to manage third party packages on Kubernetes. Tiller is decommissioned with Helm3
-- Skaffold is a tool helping Kubernetes to watch for local development folders for any changes and rebuild images automatically and then update the k8s cluster (Similar to docker volumes). There is also option to directly inject the changed files into the running container (when your have nodemon or webpack, so running instances update themselves whenever a change has occurred)
+- *Helm* (client/CLI tool) + Tiller(server running inside k8s cluster) : Tool used to manage third party packages on Kubernetes. Tiller is decommissioned with Helm3
+- *Skaffold* is a tool helping Kubernetes to watch for local development folders for any changes and rebuild images automatically and then update the k8s cluster (Similar to docker volumes). There is also option to directly inject the changed files into the running container (when your have nodemon or webpack, so running instances update themselves whenever a change has occurred)
 - Kubernetes commands:
 ```
     - kubectl apply -f <filename>

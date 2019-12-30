@@ -35,5 +35,5 @@
     - kubectl describe <object type> <name of object> //get detailed info about an object
     - kubectl set  image <object type>/<object name> <container name>=<new image path>, example : kubectl set  image deployment/client-deployment client=ghoshsaurabh/multi-client:v2 //Update the version of image imperatively! 
     - eval $(minikube docker-env) //configure the VM to use docker server. Will be applicable only to the current terminal
-    - Kubectl create <type of object> <type> <name> —from-literal <key=value>. Example usage : Kubectl create secret generic pgpassword - - from-literal pgpassword=p@$$w0rd
-    ```
+    - Kubectl create <type of object> <type> <name> —from-literal <key=value>. Example usage : Kubectl create secret generic pgpassword - - from-literal pgpassword=somepassword
+    

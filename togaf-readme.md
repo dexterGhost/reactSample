@@ -1,0 +1,120 @@
+- **Enterprise**: any collection of organizations that has a common set of goals
+- **Architecture**: 
+    - A formal description of a system to guide implementation
+    - The structure of components, their inter-relationships, and the guidelines governing their design and evolution over time
+- Why do we need Enterprise Architecture?
+    - Lower costs : development, maintenance, support
+    - Reduced complexity
+    - Reduced risk
+    - Simpler to add new systems
+    - Faster purchase and implementation
+- Core concepts of Togaf 9.1 standard:
+    - Four architecture domains : **BDAT**. BDAT is basically gap analysis for all kinds of architecture.
+    - Architecture development method :**ADM**
+    - Deliverables, Artifacts, Building blocks
+        - Deliverables: work product contractually specified, formally reviewed, agreed to, and signed off on by stakeholders, outputs of projects
+        - Artifacts: Architecture work product, catalogs, diagrams, matrices, part of deliverables placed into architecture repository
+        - Building blocks: potentially re-usable component (ABB - Architecture building blocks)
+    - Enterprise continuum
+        - A view of architecture repository
+        - Foundation architecture : too generic
+        - Common systems architecture : architecture that is common like inventory system
+        - Industry architecture :
+        - Organization-specific architecture 
+    - Architecture repository
+        - Similar to filing cabinet
+        - Stores deliverables, documents and every architectural outputs at different levels
+        - Components (drawers of cabinet):
+            - Architecture metamodel: Templates 
+            - Architecture capability
+            - Architecture landscape
+            - Standard information base: External standard documents
+            - Reference library
+            - Governance log
+    - Architecture capability of an organization
+        - Capability of a business to support an architecture function
+        - Full time architect, a group, who they report to, governance board
+- **ADM**
+    - Set of 9 steps (Preliminary phase + 8 phases)
+    - All phases surround the requirement management phase
+    - *In general all BDAT phases end up with conducting a formal stakeholder review and creating architecture document*
+    - Phases:
+        - Preliminary phase
+            - Preparation and initiation activities
+            - Defining enterprise (could be just a project within an org)
+            - Choosing frameworks (togaf included)
+            - Evaluate enterprise maturity and capability
+            - Defining the architecture principles and choosing architecture team
+        - Architecture Vision (Phase A)
+            - Develop a high level vision to be delivered (BA role, requirement gatherings from different teams)
+            - Obtain approval for a Statement of Architecture work
+            - Define scope
+            - Estimate resources needed
+            - Develop a roadmap and schedule
+            - KPIs and metrics (Cost reduction estimates, less maintainability)
+            - Communication plan
+        - Business Architecture (Phase B)
+            - B in BDAT
+            - Develop the baseline business architecture
+            - Develop the target business architecture
+            - Identify gaps between baseline and target (requirements)
+            - Create USE-CASE diagrams
+        - Information Systems Architecture (Phase C)
+            - D & A in BDAT
+            - Develop baseline and target Data and Application architecture
+            - Identify gaps
+        - Technology Architecture (Phase D)
+            - T in BDAT
+            - Develop baseline and target Technology architecture
+            - Identify gaps
+        - Opportunities and Solutions (Phase E)
+            - Initial complete version of Architecture Roadmap, based on gap analysis
+            - Determine if incremental approach is required
+            - Formulate a implementation & migration strategy/plan
+            - The architecture vision can be updated as part of Phase E, once you've finalized the design
+            - Define SBB’s
+        - Migration Planning (Phase F)
+            - Finalize Architecture Roadmap and implementation and Migration plan
+            - Start implementation, costs, resource requirements
+            - Ensuring that plan is coordinated with enterprise’s approach to change
+            - Reusable ABB’s
+            - Implementation of Governance model
+        - Implementation Governance (Phase G)
+            - Ensure conformance with target architecture
+            - Update baseline architecture as changes are implemented
+            - Phase ends when solutions are fully deployed
+            - Output is a architecture contract, *a joint agreement between development partners and sponsors on the deliverables, quality and fitness-for-purpose of an architecture*
+        - Architecture Change Management (Phase H)
+            - Keeping the architecture alive
+            - Monitoring changes in the industry, technology changes, formal change requests
+            - Execute architecture governance
+    - **Enterprise continuum**
+        - A view of architecture repository
+        - Classifying architecture and solution artifacts
+        - Architecture continuum and Solution continuum
+        - Basically a tool that allows us to classify artifacts into generic (on left) to specific (on right)
+        - ABB’s belong to Architecture continuum
+        - SBB’s belong to Solution continuum
+        - Continuum from generic to specific below (left to right)
+            - Foundation architecture (TRM) —> Common systems architecture(III-RM) —> Industry architecture —> Org-specific architecture
+
+===================================================================================================================
+
+General steps in BDAT (each domain)
+- Select Reference, Models, Viewpoints and Tools
+    - Modelling (level of detail/modelling)
+    - Catalogs
+    - Matrices
+    - Diagrams
+    - Types of requirements
+- Develop Baseline architecture description
+- Develop Target architecture description
+- Perform Gap Analysis
+- Identify Candidate roadmap components (like for Technology Architecture domain, roadmaps can be setup dev env, staging env….)
+- Resolve impacts (within or outside project scope..)
+- Conduct formal stakeholder review
+- Finalize architecture
+- Create data definition document
+
+
+

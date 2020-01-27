@@ -1,4 +1,4 @@
-1. Makes like easy for installation of softwares and their related dependencies
+1. Makes life easy for installation of softwares and their related dependencies
 2. Docker is an ecosystem containing of client, server, machine, images, hub, compose…. all together responsible for creating an image which can be used for running containers. Image will contain all the dependencies required to run the program(s)
 3. Container is an instance of a running program/Container is a program with its own set of hardware resources (own networking tech, own hdd, own memory)
 4. Docker commands:

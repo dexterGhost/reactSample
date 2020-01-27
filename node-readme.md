@@ -1,0 +1,23 @@
+- Basically a runtime environment for Javascript
+- Runs on V8 and libuv engine (V8 is 70% C++, libuv is 100% C++). V8 engine is basically used for translating JS types to C++ equivalents (Arrays, Int’s..). libuv is used to manage concurrency in the C++ code and access file system
+- **lib** directory inside node library (github) is the JS side, whereas **src** directory is the C++ side
+- **process.binding()** method in the node library connects JS and C++ functions
+- Node (event loop) itself is single threaded. But some of the code we write (Framework/Std Lib) might execute outside the event loop, hence will not be Single threaded. Example: Two separate calls to crypto function pbkdf2 complete at almost the same time (1 second), meaning they run parallel (multi thread)
+- libuv does calculations outside of the event loop. It maintains a thread pool
+- If libuv delegates operation to OS, for example http request, then there is no blocking IO with node. The OS takes care of managing multiple requests
+- Node thread pool by default has four threads available.
+- FS operations also go through thread pool. When FS is invoked, the initial request goes to HDD to get info for the file, during this period the container thread is made available for other processes. Example if we have the below invocation order:
+    - HTTP
+    - FS
+    - Crypto (Hash)
+    - Crypto (Hash)
+    - Crypto (Hash)
+	The execution order will be :
+    - HTTP
+    - Crypto (Hash)
+    - FS
+    - Crypto (Hash)
+    - Crypto (Hash)
+- To achieve multi threading with node / improve the overall performance, we can use Node in a **‘cluster’ mode**. **Worker threads** is another way to improve performance, but is till experimental. Recommended approach is to use ‘Cluster’ mode
+- We should not make the number of cluster.fork() to be more than the number of logical cores in our machine (dual core, quad core)
+- PM2 is a node cluster management system. Widely used in production. Example command: ```pm2 start index.js -i 0```
